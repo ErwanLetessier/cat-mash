@@ -14,6 +14,8 @@ public class WebController {
 
   private String index = loadFromClasspathFile("static/index.html");
 
+  private String javascript = loadFromClasspathFile("static/s.js");
+
   private String loadFromClasspathFile(String filename) {
     try {
       InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filename);
@@ -32,6 +34,11 @@ public class WebController {
   @GetMapping(value = "/", produces = MediaType.TEXT_HTML_VALUE)
   public String index() {
     return index;
+  }
+
+  @GetMapping(value = "/s.js", produces = "application/javascript")
+  public String javascript() {
+    return javascript;
   }
 
 }
