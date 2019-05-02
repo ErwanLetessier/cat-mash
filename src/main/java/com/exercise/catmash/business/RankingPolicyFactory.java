@@ -1,4 +1,4 @@
-package com.exercise.catmash;
+package com.exercise.catmash.business;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

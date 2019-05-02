@@ -1,4 +1,4 @@
-package com.exercise.catmash;
+package com.exercise.catmash.business;
 
 import com.exercise.catmash.model.CatImages;
 import com.exercise.catmash.model.RankedCat;

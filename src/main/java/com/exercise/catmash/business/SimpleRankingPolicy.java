@@ -1,4 +1,4 @@
-package com.exercise.catmash;
+package com.exercise.catmash.business;
 
 public class SimpleRankingPolicy implements RankingPolicy {
   @Override

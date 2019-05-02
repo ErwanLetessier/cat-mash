@@ -1,4 +1,4 @@
-package com.exercise.catmash;
+package com.exercise.catmash.business;
 
 import com.exercise.catmash.model.RankedCat;
 import org.springframework.beans.factory.annotation.Autowired;

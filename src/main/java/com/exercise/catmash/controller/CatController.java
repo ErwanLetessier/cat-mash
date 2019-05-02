@@ -1,7 +1,7 @@
 package com.exercise.catmash.controller;
 
-import com.exercise.catmash.CatProvider;
-import com.exercise.catmash.CatRankingSystem;
+import com.exercise.catmash.business.CatProvider;
+import com.exercise.catmash.business.CatRankingSystem;
 import com.exercise.catmash.model.RankedCat;
 import com.exercise.catmash.model.VoteResult;
 import org.springframework.beans.factory.annotation.Autowired;
