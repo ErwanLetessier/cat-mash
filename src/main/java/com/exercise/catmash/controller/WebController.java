@@ -16,6 +16,9 @@ public class WebController {
 
   private String javascript = loadFromClasspathFile("static/s.js");
 
+  private String ranking = loadFromClasspathFile("static/ranking.html");
+
+
   private String loadFromClasspathFile(String filename) {
     try {
       InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filename);
@@ -40,5 +43,12 @@ public class WebController {
   public String javascript() {
     return javascript;
   }
+
+  @GetMapping(value = "/ranking", produces = MediaType.TEXT_HTML_VALUE)
+  public String ranking() {
+    return ranking;
+  }
+
+
 
 }

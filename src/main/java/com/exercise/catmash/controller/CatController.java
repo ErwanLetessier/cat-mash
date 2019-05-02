@@ -28,4 +28,9 @@ public class CatController {
     catRankingSystem.vote(voteResult.getWinner(), voteResult.getLooser());
   }
 
+  @GetMapping("/allCatsRanking")
+  public List<RankedCat> allCatsRanking() {
+    return catRankingSystem.allCatsByDescendingRank();
+  }
+
 }

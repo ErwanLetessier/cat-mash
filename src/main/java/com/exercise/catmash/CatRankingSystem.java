@@ -44,9 +44,8 @@ public class CatRankingSystem {
   }
 
   public void vote(String winner, String looser) {
-    if (exists(winner) && exists(looser)) {
+    if (exists(winner) && exists(looser))
       updateRanks(winner, looser);
-    }
   }
 
   private void saveRank(String id, Integer rank) {
@@ -63,5 +62,12 @@ public class CatRankingSystem {
     saveRank(winner, rankingPolicy.winnerNewRank(winnerCurrentRank, looserCurrentRank));
     saveRank(looser, rankingPolicy.looserNewRank(looserCurrentRank, winnerCurrentRank));
   }
+
+  public List<RankedCat> allCatsByDescendingRank() {
+    List<RankedCat> cats = new ArrayList<>(catsById.values());
+    cats.sort(Comparator.comparing(RankedCat::getRank).reversed());
+    return cats;
+  }
+
 
 }

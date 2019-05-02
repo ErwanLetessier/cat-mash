@@ -23,4 +23,16 @@ function vote(winner, looser) {
         });
 }
 
+function catsRanking() {
+     $.get("allCatsRanking",
+        function( data ) {
+            var html = "";
+            $.each(data, function(i, cat){
+                html += '<img src="'+cat.url+'" />';
+                if ((i+1) %5 == 0)
+                    html +="<br />"
+            });
+            $("#cats").html(html);
+        })
+}
 

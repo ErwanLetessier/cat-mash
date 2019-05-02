@@ -12,8 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
 
@@ -45,4 +48,11 @@ public class CatControllerIT {
     assertNotEquals(cats[0], cats[1]);
   }
 
+  @Test public void allCatsRanking_should_return_100_cats_ordered_by_decreasing_rank() throws Exception {
+    ResponseEntity<RankedCat[]> response = template.getForEntity(serviceUrl("allCatsRanking"), RankedCat[].class);
+    List<RankedCat> cats = Arrays.asList(response.getBody());
+    assertThat(cats.size(), equalTo(100));
+    for (int i = 1; i < cats.size(); i++)
+      assertThat(cats.get(i).getRank(), lessThanOrEqualTo(cats.get(i - 1).getRank()));
+  }
 }
