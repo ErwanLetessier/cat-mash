@@ -5,6 +5,14 @@
 <script>
 $(function() {
     loadTwoRandomCats();
+    $("#cat1").click(function(){
+        vote($("#cat1").attr("name"), $("#cat2").attr("name"));
+        loadTwoRandomCats();
+    })
+    $("#cat2").click(function(){
+        vote($("#cat2").attr("name"), $("#cat1").attr("name"));
+        loadTwoRandomCats();
+    })
 });
 </script>
 <style>

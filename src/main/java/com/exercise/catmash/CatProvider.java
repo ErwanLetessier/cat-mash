@@ -36,4 +36,7 @@ public class CatProvider {
     return randomCats;
   }
 
+  public List<RankedCat> allCats() {
+    return rankedCats;
+  }
 }

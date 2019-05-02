@@ -24,4 +24,8 @@ public class CatController {
     return catProvider.pickTwoRandomCats();
   }
 
+  @PostMapping("/vote") public void vote(@RequestBody VoteResult voteResult) {
+    catRankingSystem.vote(voteResult.getWinner(), voteResult.getLooser());
+  }
+
 }

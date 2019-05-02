@@ -10,3 +10,17 @@ function loadTwoRandomCats() {
         }
     )
 }
+
+function vote(winner, looser) {
+    var data = JSON.stringify({winner: winner, looser: looser});
+        $.ajax({
+          type: "POST",
+          url: "vote",
+          contentType: "application/json;charset=utf-8",
+          data: data,
+          success: function() {console.log("vote sent")},
+          dataType: "json"
+        });
+}
+
+
