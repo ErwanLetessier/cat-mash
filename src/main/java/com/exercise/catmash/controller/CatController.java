@@ -19,7 +19,7 @@ public class CatController {
   @Autowired
   private CatRankingSystem catRankingSystem;
 
-  @GetMapping("/twoRandomCats")
+  @GetMapping("/match")
   public Set<RankedCat> pickTwoRandomCats() {
     return catProvider.pickTwoRandomCats();
   }
@@ -28,7 +28,7 @@ public class CatController {
     catRankingSystem.vote(voteResult.getWinner(), voteResult.getLooser());
   }
 
-  @GetMapping("/allCatsRanking")
+  @GetMapping("/ranking")
   public List<RankedCat> allCatsRanking() {
     return catRankingSystem.allCatsByDescendingRank();
   }

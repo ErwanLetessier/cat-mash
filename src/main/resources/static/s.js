@@ -1,5 +1,5 @@
 function loadTwoRandomCats() {
-    $.get("twoRandomCats",
+    $.get("match",
         function( data ) {
           var cat1 = data[0]
           $("#cat1").attr("name",cat1.id);
@@ -24,7 +24,7 @@ function vote(winner, looser) {
 }
 
 function catsRanking() {
-     $.get("allCatsRanking",
+     $.get("ranking",
         function( data ) {
             var html = "";
             $.each(data, function(i, cat){
