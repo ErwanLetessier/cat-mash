@@ -1,23 +1,20 @@
 package com.exercise.catmash.business;
 
 import com.exercise.catmash.model.RankedCat;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class CatRankingSystem {
 
-  @Autowired
-  private CatProvider catProvider;
+  private final RankingPolicy rankingPolicy;
 
-  @Autowired
-  private RankingPolicy rankingPolicy;
-
-  private Map<String, RankedCat> catsById =  new HashMap<>();
+  private final Map<String, RankedCat> catsById;
 
   private static Consumer<RankedCat> generateRandomRank =
     new Consumer<RankedCat>() {
@@ -32,10 +29,13 @@ public class CatRankingSystem {
       }
     };
 
+  public CatRankingSystem(CatProvider catProvider, RankingPolicy rankingPolicy) {
+    this.rankingPolicy = rankingPolicy;
+    catsById = catProvider.allCats().stream()
+      .collect( Collectors.toMap(RankedCat::getId, Function.identity()) );
+  }
 
-  @PostConstruct
-  private void init() {
-    catProvider.allCats().forEach(cat -> catsById.put(cat.getId(), cat));
+  @PostConstruct private void init() {
     catsById.values().forEach(generateRandomRank);
   }
 
@@ -52,7 +52,7 @@ public class CatRankingSystem {
     catsById.get(id).setRank(rank);
   }
 
-  private Integer getRank(String id) {
+  protected Integer getRank(String id) {
     return catsById.get(id).getRank();
   }
 
